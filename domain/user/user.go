@@ -1,11 +1,11 @@
 package user
 
 import (
-	"rbac/entity"
+	"rbac/entity/user"
 )
 
 type User interface {
-	GetAllUser() ([]entity.User, error)
+	GetAllUser() ([]user.User, error)
 }
 
 // func GetAllUser() {

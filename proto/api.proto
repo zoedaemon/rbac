@@ -1,0 +1,26 @@
+syntax = "proto3";
+option go_package = ".";
+package rbac_api;
+
+service API {
+	rpc GetAllUser(UserId) returns (User){};
+}
+
+// message Users{
+// 	repeated User = 1;
+// }
+
+message User {
+	uint64 id = 1;
+	uint64 role_id = 2;
+	string email = 3;
+}
+
+message UserId {
+	string id = 1;
+}
+
+message Empty {
+	
+}
+
