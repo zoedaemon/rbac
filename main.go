@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net"
+
 	// user_domain "rbac/domain/user"
 	entity "rbac/entity"
 	user "rbac/entity/user"
@@ -13,6 +15,7 @@ import (
 
 func main() {
 	conn := entity.InitDB()
+	defer conn.Close(context.Background())
 	// var UserDomain *user_domain.User
 	userEntity := &user.User{}
 	userEntity.SetDB(conn)
@@ -20,9 +23,9 @@ func main() {
 	api.RegisterAPIServer(s, userEntity)
 	lis, err := net.Listen("tcp", "5555")
 	if err != nil {
-		log.Fatal("Failed to Listen: %v", err)
+		log.Fatal("Failed to Listen: ", err)
 	}
 	if err := s.Serve(lis); err != nil {
-		log.Fatal("Failed to Serve: %v", err)
+		log.Fatal("Failed to Serve: ", err)
 	}
 }
