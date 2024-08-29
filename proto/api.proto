@@ -4,7 +4,7 @@ package rbac_api;
 
 service API {
 	rpc GetAllUser(UserId) returns (User){};
-	// rpc CreateUser(User) returns(){User}{};
+	// rpc CreateUser(User) returns(User){};
 }
 
 // message Users{
